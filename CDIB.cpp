@@ -93,13 +93,17 @@ bool CDIB::CreateGreateScaleDIB(CRect size, int xPPM, int yPPM) {
 }
 
 bool CDIB::GetPixel1(int x, int y) {
-	int bit_num = (y * bitmapInfoHeader->biWidth + x);
+	int bits_row = (1 * bitmapInfoHeader->biWidth + 31) /32 * 4 * 8;
+
+	int bit_num = y * bits_row + x;
 	int byte_num = bit_num / 8;
 	int bit_in_byte = bit_num % 8;
 
-	BYTE byte = *((BYTE*)bitmapContent + byte_num);
+	BYTE* byte = (BYTE*)bitmapContent + byte_num;
 
-	return true;
+	bool bit = !((*byte >> (7-bit_in_byte)) & 0x01);
+
+	return bit;
 }
 
 BYTE CDIB::GetPixel8(int x, int y) {
