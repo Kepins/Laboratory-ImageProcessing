@@ -200,7 +200,7 @@ void CPODlg::OnBnClickedButtonProcess()
 	if (sOption == L"convert to greyscale")
 	{
 		CRect dib_rect(0, 0, m_imgIN.dib.bitmapInfoHeader->biWidth, m_imgIN.dib.bitmapInfoHeader->biHeight);
-		m_imgOUT.dib.CreateGreateScaleDIB(dib_rect, 2835, 2835);
+		m_imgOUT.dib.CreateGreateScaleDIB(dib_rect, m_imgIN.dib.bitmapInfoHeader->biXPelsPerMeter, m_imgIN.dib.bitmapInfoHeader->biYPelsPerMeter);
 		if (m_imgIN.dib.bitmapInfoHeader->biBitCount == 1) {
 			for (int i = 0; i < m_imgIN.dib.bitmapInfoHeader->biWidth * m_imgIN.dib.bitmapInfoHeader->biHeight; i++) {
 				int x = i % m_imgIN.dib.bitmapInfoHeader->biWidth;

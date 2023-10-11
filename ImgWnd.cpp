@@ -50,14 +50,6 @@ void CImgWnd::OnPaint()
 	CRect r;
 	GetClientRect(r);
 
-	//test
-	/*dib.CreateGreateScaleDIB(CRect(0, 0, 700, 800), 2835, 2835);
-
-	for (int i = 0; i < 700; i++)
-	{
-		dib.SetPixel8(i, i, 0xFF);
-	}*/
-
 
 	if (dib.fileContent) {
 		// l, t, r, b
